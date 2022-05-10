@@ -10,8 +10,8 @@
     <hr />
     <p id="answer"></p>
     <div id="input">
-      <form id="form">
-        <select name="num0">
+      <form id="form" onchange="changeNum()">
+        <select name="num0" id="selectedNum0">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -23,7 +23,7 @@
           <option value="8">8</option>
           <option value="9">9</option>
         </select>
-        <select name="num1">
+        <select name="num1" id="selectedNum1">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -35,7 +35,7 @@
           <option value="8">8</option>
           <option value="9">9</option>
         </select>
-        <select name="num2">
+        <select name="num2" id="selectedNum2">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -47,7 +47,7 @@
           <option value="8">8</option>
           <option value="9">9</option>
         </select>
-        <select name="num3">
+        <select name="num3" id="selectedNum3">
           <option value="0">0</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -59,17 +59,15 @@
           <option value="8">8</option>
           <option value="9">9</option>
         </select>
-        <input type="button" value="OK" onclick="pushOk()" />
-        <input type="button" value="RESET" onclick="pushReset()" />
+        <input type="button" id="okBtn" value="OK" onclick="pushOk()" />
+        <!-- <input type="button" value="RESET" onclick="pushReset()" /> -->
       </form>
     </div>
     <hr />
     <div id="result">
-      <ul style="display: flex; list-style: none">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
+      <ul style="list-style-type: none; padding-left: 0">
+        <li>2 | 3, 4, 6, 8 | Hit: 1, Blow: 1</li>
+        <li>1 | 1, 2, 3, 4 | Hit: 0, Blow: 2</li>
       </ul>
     </div>
     <script src="./script.js"></script>
