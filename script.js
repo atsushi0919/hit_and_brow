@@ -5,7 +5,7 @@ const n = 4
 const ary = [...Array(10)].map((_, i) => i)
 const answer = random(ary, 4)
 // 回答数
-const maxCount = 10
+const maxCount = 9
 let count = 0
 
 // 答え表示
@@ -53,9 +53,29 @@ function pushOk() {
       blow++
     }
   }
-  console.log(answer)
-  console.log(numbers)
-  console.log(hit, blow)
+  count++
+
+  // 結果表示
+  putResult(count, numbers, hit, blow)
+
+  // ゲームオーバー表示
+  if (hit == 4) {
+    console.log('正解！')
+  } else if (count == 9) {
+    console.log('残念！')
+  }
+}
+
+function putResult(count, numbers, hit, blow) {
+  // 親要素 ul
+  const result = document.getElementById('result')
+  // 子要素 li
+  const line = document.createElement('li')
+  const msg = `${count} | ${numbers.join(', ')} | Hit: ${hit}, Blow: ${blow}`
+  line.prepend(msg)
+  console.log(msg)
+  // 要素を追加
+  result.prepend(line)
 }
 
 function random(array, n) {
