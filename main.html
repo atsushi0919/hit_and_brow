@@ -4,15 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hit and Blow</title>
+    <style>
+      #form {
+        padding-left: 20px;
+      }
+      #form select,
+      #okBtn {
+        margin-left: 5px;
+        font-size: 1.25rem;
+        height: 40px;
+        width: 50px;
+      }
+      #result {
+        list-style-type: none;
+        padding-left: 0;
+      }
+    </style>
   </head>
   <body>
     <h1>Hit & Blow</h1>
-    <!-- <p id="answer"></p> -->
+    <p>Hit & Blowは0から9までの数字からランダムに4個選んだ数を当てるゲームです。</p>
+    <p>【ルール】</p>
+    <ul>
+      <li>セレクトボックスで数字を選んでOKボタンを押すと合否が判定されます。</li>
+      <li>同じ数字を複数回使うことは出来ません。</li>
+      <li>数字と場所が合っていればHitにカウントされます。</li>
+      <li>数字が合っていて場所が違えばBlowにカウントされます。</li>
+      <li>9回まで回答することが出来ます。</li>
+    </ul>
+    <hr />
     <form id="form" onchange="changeNum()">
       <input type="button" id="okBtn" value="OK" onclick="pushOk()" />
     </form>
     <hr />
-    <ul id="result" style="list-style-type: none; padding-left: 0"></ul>
+    <ul id="result"></ul>
     <script src="./script.js"></script>
   </body>
 </html>
