@@ -67,7 +67,7 @@ function pushOk() {
     if (hit == 4) {
       msg = '<p>正解！おめでとう！！'
     } else {
-      msg = '<p>残念！また挑戦してね！！'
+      msg = `<p>残念！答えは${answer}でした。また挑戦してね！！`
     }
     msg += '<br>（再挑戦するにはリロードしてください。）</p>'
     result.insertAdjacentHTML('beforebegin', msg)
