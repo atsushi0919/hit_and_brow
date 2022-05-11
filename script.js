@@ -2,23 +2,25 @@
 
 // 0 から 9 までの数字からランダムに 4 個選ぶ
 const n = 4
-const ary = [...Array(10)].map((_, i) => i)
+const numSize = 10
+const ary = [...Array(numSize)].map((_, i) => i)
 const answer = random(ary, 4)
 // 回答数
 const maxCount = 9
 let count = 0
 
-// 答え表示
+// デバッグ用答え表示
 document.getElementById('answer').textContent = answer
 // 回答フォーム初期化
+makeInputForm()
 changeNum()
 
 function changeNum() {
   console.log('Change Number')
 
-  // 選択した番号が全て違うか
+  // 番号の重複チェック
   const numbers = getSelectedNumbers()
-  const isAllUnique = numbers.length === new Set(numbers).size
+  const isAllUnique = numbers.length == new Set(numbers).size
 
   // ボタン有効・無効切り替え
   const btn = document.getElementById('okBtn')
@@ -33,10 +35,10 @@ function changeNum() {
 
 function getSelectedNumbers() {
   return [
-    document.getElementById('selectedNum0').value,
-    document.getElementById('selectedNum1').value,
-    document.getElementById('selectedNum2').value,
-    document.getElementById('selectedNum3').value,
+    document.getElementById('num0').value,
+    document.getElementById('num1').value,
+    document.getElementById('num2').value,
+    document.getElementById('num3').value,
   ].map(Number)
 }
 
@@ -58,12 +60,30 @@ function pushOk() {
   // 結果表示
   putResult(count, numbers, hit, blow)
 
-  // ゲームオーバー表示
+  // ゲームオーバー
   if (hit == 4) {
     console.log('正解！')
   } else if (count == 9) {
     console.log('残念！')
   }
+}
+
+function makeInputForm() {
+  // form に追加
+  const form = document.getElementById('form')
+  for (let i = n - 1; i >= 0; i--) {
+    const selectTag = `<select name="num${i}" id="num${i}"></select>`
+    form.insertAdjacentHTML('afterbegin', selectTag)
+    for (let j = 0; j < numSize; j++) {
+      // select に追加
+      const select = document.getElementById(`num${i}`)
+      const optionTag = `<option value="${j}">${j}</option>`
+      select.insertAdjacentHTML('beforeend', optionTag)
+    }
+
+    console.log(i)
+  }
+  // 子要素 select
 }
 
 function putResult(count, numbers, hit, blow) {

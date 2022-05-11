@@ -6,62 +6,12 @@
     <title>Hit and Blow</title>
   </head>
   <body>
-    <h1>HaB</h1>
+    <h1>Hit & Blow</h1>
     <hr />
     <p id="answer"></p>
-    <div id="input">
-      <form id="form" onchange="changeNum()">
-        <select name="num0" id="selectedNum0">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
-        <select name="num1" id="selectedNum1">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
-        <select name="num2" id="selectedNum2">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
-        <select name="num3" id="selectedNum3">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
-        <input type="button" id="okBtn" value="OK" onclick="pushOk()" />
-      </form>
-    </div>
+    <form id="form" onchange="changeNum()">
+      <input type="button" id="okBtn" value="OK" onclick="pushOk()" />
+    </form>
     <hr />
     <ul id="result" style="list-style-type: none; padding-left: 0"></ul>
     <script src="./script.js"></script>
