@@ -10,7 +10,7 @@ const maxCount = 9
 let count = 0
 
 // デバッグ用答え表示
-document.getElementById('answer').textContent = answer
+// document.getElementById('answer').textContent = answer
 // 回答フォーム初期化
 makeInputForm()
 changeNum()
@@ -61,10 +61,21 @@ function pushOk() {
   putResult(count, numbers, hit, blow)
 
   // ゲームオーバー
-  if (hit == 4) {
-    console.log('正解！')
-  } else if (count == 9) {
-    console.log('残念！')
+  if (hit == 4 || count == maxCount) {
+    let msg
+    const result = document.getElementById('result')
+    if (hit == 4) {
+      msg = '<p>正解！おめでとう！！'
+    } else {
+      msg = '<p>残念！また挑戦してね！！'
+    }
+    msg += '<br>（再挑戦するにはリロードしてください。）</p>'
+    result.insertAdjacentHTML('beforebegin', msg)
+    document.getElementById('num0').disabled = true
+    document.getElementById('num1').disabled = true
+    document.getElementById('num2').disabled = true
+    document.getElementById('num3').disabled = true
+    document.getElementById('okBtn').disabled = true
   }
 }
 
@@ -80,10 +91,7 @@ function makeInputForm() {
       const optionTag = `<option value="${j}">${j}</option>`
       select.insertAdjacentHTML('beforeend', optionTag)
     }
-
-    console.log(i)
   }
-  // 子要素 select
 }
 
 function putResult(count, numbers, hit, blow) {
