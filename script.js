@@ -4,7 +4,7 @@
 const n = 4
 const numSize = 10
 const ary = [...Array(numSize)].map((_, i) => i)
-const answer = random(ary, 4)
+const answer = random(ary, n)
 // 回答数
 const maxCount = 9
 let count = 0
@@ -61,10 +61,10 @@ function pushOk() {
   putResult(count, numbers, hit, blow)
 
   // ゲームオーバー
-  if (hit == 4 || count == maxCount) {
+  if (hit == n || count == maxCount) {
     let msg
     const result = document.getElementById('result')
-    if (hit == 4) {
+    if (hit == n) {
       msg = '<p>正解！おめでとう！！'
     } else {
       msg = `<p>残念！答えは${answer}でした。また挑戦してね！！`
