@@ -1,6 +1,5 @@
 'use strict'
 
-// 0 から 9 までの数字からランダムに 4 個選ぶ
 const n = 4
 const numSize = 10
 const ary = [...Array(numSize)].map((_, i) => i)
@@ -9,30 +8,29 @@ const answer = random(ary, n)
 const maxCount = 9
 let count = 0
 
-// デバッグ用答え表示
-// document.getElementById('answer').textContent = answer
-// 回答フォーム初期化
+// デバッグ用
+// console.log(answer)
+
+// 入力フォーム初期化
 makeInputForm()
 changeNum()
 
+// 入力フォームに変更があった時の処理
 function changeNum() {
-  console.log('Change Number')
-
-  // 番号の重複チェック
+  // 入力番号の重複チェック
   const numbers = getSelectedNumbers()
   const isAllUnique = numbers.length == new Set(numbers).size
 
-  // ボタン有効・無効切り替え
+  // OKボタン有効・無効切り替え
   const btn = document.getElementById('okBtn')
   if (isAllUnique) {
     btn.removeAttribute('disabled')
   } else {
     btn.setAttribute('disabled', true)
   }
-  console.log(numbers)
-  console.log(isAllUnique)
 }
 
+// 入力フォームの数字を取得する
 function getSelectedNumbers() {
   return [
     document.getElementById('num0').value,
@@ -42,10 +40,11 @@ function getSelectedNumbers() {
   ].map(Number)
 }
 
+// OKボタンを押したときの処理
 function pushOk() {
-  console.log('OK')
   const numbers = getSelectedNumbers()
 
+  // HitとBlowを数えて回答カウントを進める
   let blow = 0
   let hit = 0
   for (let i = 0; i < n; i++) {
@@ -60,7 +59,7 @@ function pushOk() {
   // 結果表示
   putResult(count, numbers, hit, blow)
 
-  // ゲームオーバー
+  // ゲームオーバーの処理
   if (hit == n || count == maxCount) {
     let msg
     const result = document.getElementById('result')
@@ -79,6 +78,7 @@ function pushOk() {
   }
 }
 
+// 入力フォームを作成する
 function makeInputForm() {
   // form に追加
   const form = document.getElementById('form')
@@ -94,6 +94,7 @@ function makeInputForm() {
   }
 }
 
+// 判定結果を表示する
 function putResult(count, numbers, hit, blow) {
   // 親要素 ul
   const result = document.getElementById('result')
@@ -101,11 +102,11 @@ function putResult(count, numbers, hit, blow) {
   const line = document.createElement('li')
   const msg = `${count} | ${numbers.join(', ')} | Hit: ${hit}, Blow: ${blow}`
   line.prepend(msg)
-  console.log(msg)
   // 要素を追加
   result.prepend(line)
 }
 
+// array からランダムに n 個選択する
 function random(array, n) {
   let t = {}
   let r = []
